@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/World/Noise_Method.gd" type="Script" id=1]
+
+[sub_resource type="OpenSimplexNoise" id=3]
+seed = 1706408829
+persistence = 0.0
+lacunarity = 1.56
+
+[sub_resource type="NoiseTexture" id=4]
+width = 1024
+height = 1024
+seamless = true
+noise = SubResource( 3 )
+
+[node name="Noise" type="Sprite"]
+position = Vector2( 1543, 323 )
+texture = SubResource( 4 )
+script = ExtResource( 1 )
+world_seed = "Other test v"
+noise = SubResource( 4 )

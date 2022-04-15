@@ -1,0 +1,53 @@
+[gd_scene format=2]
+
+[node name="House" type="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.34259, 0.0452623 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 5.02708, 0, 0, 0, 5.02708, 0, 0, 0, 5.02708, 0, 8.53035, 0 )
+width = 3.58507
+
+[node name="CSGBox2" type="CSGBox" parent="CSGBox"]
+operation = 2
+width = 3.30497
+height = 1.71897
+depth = 1.652
+
+[node name="CSGBox4" type="CSGBox" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 0.826305, -0.563223, 0, 0.563223, 0.826305, 0.956563, -1.67848, 2.128 )
+width = 0.885003
+height = 0.0686054
+depth = 2.80209
+
+[node name="CSGBox3" type="CSGBox" parent="CSGBox"]
+transform = Transform( 0.23298, 0, 0, 0, 1, 0, 0, 0, 1, 0.985516, -1.19209e-07, 0.271356 )
+operation = 2
+width = 3.30497
+height = 1.71897
+depth = 1.652
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53734, -1.70941, -0.572562 )
+radius = 0.172116
+height = 1.41955
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53734, -1.70941, 0.767999 )
+radius = 0.172116
+height = 1.41955
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66056, -1.70941, 0.767999 )
+radius = 0.172116
+height = 1.41955
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66056, -1.70941, -0.699457 )
+radius = 0.172116
+height = 1.41955
+
+[node name="OmniLight" type="OmniLight" parent="CSGBox"]
+transform = Transform( 0.198923, 0, 0, 0, 0.198923, 0, 0, 0, 0.198923, 0, 0.561206, 0 )
+shadow_enabled = true
+omni_range = 18.2026

@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/UI/Capture it.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/UI/UI_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/UI/Menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/UI/DroidSans.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 91
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 4 )
+
+[node name="Menu" type="Control"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 312.0
+custom_fonts/font = SubResource( 1 )
+text = "SEED PROCEDURAL
+GENERATION
+TUTORIAL"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 316.0
+margin_right = 1024.0
+margin_bottom = 403.0
+
+[node name="Continue_Game" type="Button" parent="VBoxContainer/VBoxContainer"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 2 )
+text = "CONTINUE"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 198.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+custom_fonts/font = ExtResource( 2 )
+text = "NEW WORLD SEED:"
+align = 1
+valign = 1
+
+[node name="seed_edit" type="LineEdit" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 202.0
+margin_right = 997.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+custom_fonts/font = SubResource( 2 )
+
+[node name="shuffle" type="Button" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 1001.0
+margin_right = 1024.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "#"
+
+[node name="New_Game" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 1024.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 2 )
+text = "NEW_GAME"
+
+[node name="Exit" type="Button" parent="VBoxContainer/VBoxContainer"]
+margin_top = 62.0
+margin_right = 1024.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 2 )
+text = "EXIT"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Continue_Game" to="." method="_on_Continue_Game_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer/shuffle" to="." method="_on_shuffle_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/New_Game" to="." method="_on_New_Game_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

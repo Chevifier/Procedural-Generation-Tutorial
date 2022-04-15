@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/World/Generator.gd" type="Script" id=1]
+[ext_resource path="res://assets/World_Objects/Rock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/World_Objects/Tree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/World/House.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 0.647059, 0.0117647, 1 )
+
+[sub_resource type="ArrayMesh" id=1]
+
+[node name="Main" type="Spatial"]
+script = ExtResource( 1 )
+rock = ExtResource( 2 )
+rock_count = 90
+tree = ExtResource( 3 )
+tree_count = 100
+land_material = SubResource( 2 )
+subdivisions = 50
+
+[node name="Terrain" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.62939e-06, 0 )
+mesh = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.99544, 0.0916963, 0.0263022, -0.0763391, 0.600382, 0.796062, 0.0572046, -0.794439, 0.604644, -15.9739, 87.1705, -46.7767 )
+shadow_enabled = true
+shadow_color = Color( 0.184314, 0.184314, 0.184314, 1 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -28.705 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 202.045, 1.97272e-07 )
+fov = 72.0876
+far = 1000.0
+
+[node name="House" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.8645, -41.734 )

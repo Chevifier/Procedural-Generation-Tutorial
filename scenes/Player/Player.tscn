@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Player/FPSController.gd" type="Script" id=1]
+[ext_resource path="res://scenes/UI/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Tools/axe/axe.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=3]
+resource_name = "swing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("cam_h/cam_v/axe:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.618, -1.02, -0.67 ), Vector3( 0.311, -1.02, -0.67 ), Vector3( 0.618, -1.02, -0.67 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("cam_h/cam_v/axe:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -41.1084, 30.1172, -20.8766 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.735596
+height = 2.37042
+
+[node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 118.09, -217.575 )
+script = ExtResource( 1 )
+
+[node name="cam_h" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62592, 0 )
+
+[node name="cam_v" type="Spatial" parent="cam_h"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cam_h/cam_v"]
+root_node = NodePath("../../..")
+anims/swing = SubResource( 3 )
+
+[node name="axe" parent="cam_h/cam_v" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.311, -1.02, -0.67 )
+
+[node name="Camera" type="Camera" parent="cam_h/cam_v"]
+transform = Transform( 0.999832, -0.0106631, 0.0149373, 0.0105551, 0.999918, 0.00728797, -0.0150138, -0.00712908, 0.999862, 0, 0, 0 )
+current = true
+far = 1000.0
+
+[node name="interact" type="RayCast" parent="cam_h/cam_v/Camera"]
+enabled = true
+cast_to = Vector3( 0, 0, -4 )
+collide_with_areas = true
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="UI" parent="." instance=ExtResource( 2 )]

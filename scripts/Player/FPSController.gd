@@ -24,7 +24,7 @@ var free_fly_timer = 1
 var snap = Vector3(0,-1,0)
 
 func _ready():
-	Inventory.connect("update_player_position",self,"save_position")
+	Data.connect("get_player_position",self,"update_position_data")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	start_point = global_transform.origin
 
@@ -84,6 +84,9 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_input = event.relative
 		
-func save_position():
-	Inventory.player_stats["saved_pos"] = global_transform.origin
-	Inventory.player_stats["saved_rotation"] = camera_h.rotation_degrees
+func update_position_data():
+	Data.player_stats["position"] = global_transform.origin
+	Data.player_stats["rotation"] = camera_h.rotation_degrees
+	
+	
+	

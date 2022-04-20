@@ -7,7 +7,7 @@ func _ready():
 	randomize()
 	SaveSystem.load_data()
 	if SaveSystem.data_loaded:
-		seed_line_edit.text = str(Inventory.world_seed)
+		seed_line_edit.text = Data.Seed
 	else:
 		seed_line_edit.text = "newworld"+str(round(rand_range(0,9999999)))
 	show_continue(SaveSystem.data_loaded)
@@ -19,7 +19,7 @@ func _on_Continue_Game_pressed():
 
 func _on_New_Game_pressed():
 	SaveSystem.wipe_save()
-	Inventory.world_seed = str(seed_line_edit.text)
+	Data.Seed = str(seed_line_edit.text)
 	get_tree().change_scene("res://scenes/World/World.tscn")
 
 

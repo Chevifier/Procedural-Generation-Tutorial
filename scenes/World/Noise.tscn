@@ -1,7 +1,5 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/World/Noise_Method.gd" type="Script" id=1]
-
 [sub_resource type="OpenSimplexNoise" id=3]
 seed = 1706408829
 persistence = 0.0
@@ -13,9 +11,25 @@ height = 1024
 seamless = true
 noise = SubResource( 3 )
 
+[sub_resource type="GDScript" id=5]
+script/source = "tool
+extends Sprite
+export var world_seed = \"test\"
+export(NoiseTexture)var noise : NoiseTexture;
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	noise.noise.seed = world_seed.hash()
+
+
+func _process(delta):
+	noise.noise.seed = world_seed.hash()
+	texture = noise
+"
+
 [node name="Noise" type="Sprite"]
 position = Vector2( 1543, 323 )
 texture = SubResource( 4 )
-script = ExtResource( 1 )
+script = SubResource( 5 )
 world_seed = "Other test v"
 noise = SubResource( 4 )

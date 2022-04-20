@@ -6,6 +6,6 @@ var index = 0
 func interact():
 	integrity -= 1
 	if integrity <= 0:
-		Inventory.items["rocks"] += 1
-		Inventory.removed_rocks_index.append(index)
+		Data.items["rocks"] += 1
+		Data.removed_rocks.append(index)
 		queue_free()

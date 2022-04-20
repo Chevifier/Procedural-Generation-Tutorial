@@ -16,8 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Inventory="*res://scripts/Inventory.gd"
 SaveSystem="*res://scripts/Save_System.gd"
+Data="*res://scripts/Data.gd"
 
 [input]
 

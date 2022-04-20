@@ -7,7 +7,7 @@ onready var save_status_txt = $Pause/save_status
 onready var main_ui = $main
 onready var pause_ui = $Pause
 func _ready():
-	draw_wireframe()
+	#draw_wireframe()
 	_on_resume_pressed()
 	
 func _process(delta):
